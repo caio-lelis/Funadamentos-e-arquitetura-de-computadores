@@ -1,0 +1,36 @@
+.data   
+    entrada: .asciiz "Forneca a pressa desejada:"
+    veiculo: .asciiz "a pressao do seu veiculo e:"
+    saida: .asciiz  "A diferenca entre a pressao digitada e a pressao lida:"
+
+.text
+
+    main:
+        li $v0, 4
+        la $a0, entrada
+        syscall
+
+        li $v0, 5
+        syscall
+
+        move $t1, $v0       #a pressao desejada esta em $t1
+
+
+        li $v0, 4
+        la $a0, veiculo
+        syscall
+
+        li $v0, 5
+        syscall
+
+        move $t2, $v0      #a pressao d veiculo esta em $t2
+
+        li $v0, 4
+        la $a0, saida
+        syscall
+
+        sub $t3,$t1,$t2
+
+        li $v0,1
+        move $a0,$t3
+        syscall
