@@ -1,5 +1,5 @@
 .data   
-    entrada: .asciiz "Forneca a pressa desejada:"
+    entrada: .asciiz "Forneca a pressao desejada:"
     veiculo: .asciiz "a pressao do seu veiculo e:"
     saida: .asciiz  "A diferenca entre a pressao digitada e a pressao lida:"
 
