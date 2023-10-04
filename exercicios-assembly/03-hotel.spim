@@ -1,0 +1,36 @@
+.data 
+
+.text
+    main:
+
+    li $v0, 5   #valor da diaria
+    syscall
+    move $t1, $v0  # t1 -> valor da diaria
+
+    li $v0, 5   #aumento da diaria a cada dia
+    syscall
+    move $t2, $v0 # t2 -> aumento da diaria a cada dia
+
+    li $v0, 5   #dia de chegada no hotel
+    syscall
+    move $t3, $v0 # t3 -> dia de chegada no hotel
+    
+    addi $t4, $zero, 31      #t4 -> 31
+    addi $t5, $t3, -1        #$t5 -> dia da chegada - 1
+
+    mul $t6, $t2, $t5        #$t6 -> valor do aumento da diaria x dia anterior ao dia de chegada 
+
+    add $t7, $t1, $t6        #$t7 -> valor da diaria + valor do aumento da diaria x dia anterior ao dia de chegada
+    
+    sub $t8, $t4, $t3        #$t8 fica o valor de dias que o hospede ficou no hotel
+    
+    addi $t9, $t8, 1         #$t9 -> dias que o hospede ficou no hotel + 1
+
+    mul $s1, $t7, $t9        # $s1 -> calculo da diaria x o calculo do aumento da diaria
+    
+    move $a0, $s1            #passando o registrador para $a0
+    li $v0, 1   #imprimir inteiro
+    
+    syscall
+
+   
